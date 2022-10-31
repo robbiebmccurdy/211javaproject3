@@ -224,30 +224,23 @@ public class HuffmanGraphic {
             throw new InvalidHuffmanCodeException();
         }
 
-        //System.out.println(node.getElement().getColorValue()); // color value is -1
-
         if (node.getElement().getColorValue() != -1) {
-            node.getElement().setCode(prefix);
+            colors.get(node.getElement().getColorValue()).setCode(prefix);
             prefix = "";
         } else {
-            if(node.getLeft() != null && node.getRight() != null){
-                traverse(node.getLeft(), "0");
-                traverse(node.getRight(), "1");
+            if (node.getLeft() != null && node.getRight() != null) {
+                traverse(node.getLeft(), prefix += "0");
+                traverse(node.getRight(), prefix += "1");
             }
 
-            if(node.getLeft() != null && node.getRight() == null){
-                traverse(node.getLeft(), "0");
+            if (node.getLeft() != null && node.getRight() == null) {
+                traverse(node.getLeft(), prefix += "0");
             }
 
-            if(node.getLeft() == null && node.getRight() != null){
-                traverse(node.getRight(), "1");
+            if (node.getLeft() == null && node.getRight() != null) {
+                traverse(node.getRight(), prefix += "1");
             }
         }
-
-
-
-        System.out.println("Node Element: " + node.getElement().getCode());
-
 
 
         //******************************************************
@@ -271,11 +264,30 @@ public class HuffmanGraphic {
 
         //Throw an Exception for an empty str or if the code is not found in colors ArrayList.
         //************************************
+        if(str == null){
+            throw new InvalidHuffmanCodeException();
+        }
 
+        getCodes();
+
+        String[] sA = new String[str.length()];
+        sA = str.split(",");
+
+        String colorEncode = "";
+
+        for(int i = 0; i < colors.size(); i++){
+            try{
+                if(sA[i] == colors.get(i).getCode()){
+                    colorEncode += colors.get(i).getCode();
+                }
+            } catch (Exception e){
+                throw new EmptyCollectionException("Empty");
+            }
+        }
 
 
         //************************************
-        return null;   // DELETE once encode is implemented
+        return colorEncode;   // DELETE once encode is implemented
     }
     /**
      * method: encodeGraphic
@@ -298,7 +310,28 @@ public class HuffmanGraphic {
         //Printwriter object instantiated
         PrintWriter out = new PrintWriter(outputFile);
         //************************************
+        BufferedImage image = ImageIO.read(new File(inputFile));
+        int height = image.getHeight();
+        int width = image.getWidth();
 
+        for(int x = 0; x < height; x++){
+            for(int y = 0; y < width; y++){
+                int pixel = image.getRGB(y, x);
+                int alpha = (pixel >> 24) & 0xff;
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = pixel & 0xff;
+
+                String toEn = "";
+
+                toEn += Integer.toString(alpha);
+                toEn += Integer.toString(red);
+                toEn += Integer.toString(green);
+                toEn += Integer.toString(blue);
+
+                System.out.println(encode(toEn));
+            }
+        }
 
 
         //************************************
@@ -335,8 +368,12 @@ public class HuffmanGraphic {
             return null;
         }
 
-
-
+        if(getRootElement().getColorValue() == -1){
+            traverse(root.left, "0");
+            traverse(root.right, "1");
+        } else {
+            throw new InvalidHuffmanCodeException();
+        }
 
         //************************************
 
