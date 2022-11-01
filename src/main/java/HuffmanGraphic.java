@@ -319,6 +319,8 @@ public class HuffmanGraphic {
         BufferedImage image = ImageIO.read(new File(inputFile));
         int height = image.getHeight();
         int width = image.getWidth();
+        out.write(height + "\n");
+        out.write((width) + "\n");
 
         String toEn = "";
         String temp = "";
@@ -341,12 +343,13 @@ public class HuffmanGraphic {
 
                 temp = encode(toEn).trim();
                 toEn = "";
-                out.println();
-                out.write(Integer.parseInt(temp, 2) + "\n");
-                temp = "";
+                out.write(temp + "\n");
+                out.flush();
             }
 
         }
+
+        out.close();
 
         //************************************
     }
@@ -391,10 +394,15 @@ public class HuffmanGraphic {
 
         if (root.getElement().getCode() == "0"){
             traverse(root.getLeft(), str);
+            ret += (Integer.toString(root.getElement().getColorValue()) + ",");
         }
 
         if (root.getElement().getCode() == "1"){
             traverse(root.getRight(), str);
+        }
+
+        if (root.getElement().getCode() != "0" && root.getElement().getCode() != "-1" && root.getElement().getCode() != "1") {
+            throw new InvalidHuffmanCodeException();
         }
 
         if (root.getRight() == null && root.getLeft() == null) {

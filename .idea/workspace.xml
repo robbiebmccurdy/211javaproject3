@@ -52,7 +52,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GraphicDriver">
+  <component name="RunManager" selected="JUnit.HuffmanGraphicTest_Students">
     <configuration name="GraphicDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GraphicDriver" />
       <module name="csci211project3" />
@@ -69,6 +69,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HuffmanGraphicTest_Students.testEncode4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="csci211project3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HuffmanGraphicTest_Students" />
+      <option name="METHOD_NAME" value="testEncode4" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HuffmanGraphicTest_Students.testPrintCodes1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="csci211project3" />
       <option name="PACKAGE_NAME" value="" />
@@ -81,8 +91,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GraphicDriver" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students" />
+        <item itemvalue="JUnit.HuffmanGraphicTest_Students.testEncode4" />
+        <item itemvalue="Application.GraphicDriver" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students.testPrintCodes1" />
       </list>
     </recent_temporary>
@@ -103,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667256264294</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated traverse no more null :D">
+      <created>1667268191516</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667268191516</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
