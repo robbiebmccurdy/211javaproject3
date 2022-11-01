@@ -67,10 +67,10 @@ public class HuffmanGraphic {
                 //      Example: Say the ARGB value is 255, 132, 65, 297. Then, colors ArrayList index is incremented by one, along
                 //      with indexes 132, 65 and 297.
                 //******************************************************
-                colors.get(alpha).setFrequency(aFreq++);
-                colors.get(red).setFrequency(rFreq++);
-                colors.get(green).setFrequency(gFreq++);
-                colors.get(blue).setFrequency(bFreq++);
+                colors.get(alpha).setFrequency(colors.get(alpha).getFrequency() + 1);
+                colors.get(red).setFrequency(colors.get(red).getFrequency() + 1);
+                colors.get(green).setFrequency(colors.get(green).getFrequency() + 1);
+                colors.get(blue).setFrequency(colors.get(blue).getFrequency() + 1);
 
                 //******************************************************
             }
@@ -229,16 +229,16 @@ public class HuffmanGraphic {
             prefix = "";
         } else {
             if (node.getLeft() != null && node.getRight() != null) {
-                traverse(node.getLeft(), prefix += "0");
-                traverse(node.getRight(), prefix += "1");
+                traverse(node.getLeft(), prefix + "0");
+                traverse(node.getRight(), prefix + "1");
             }
 
             if (node.getLeft() != null && node.getRight() == null) {
-                traverse(node.getLeft(), prefix += "0");
+                traverse(node.getLeft(), prefix + "0");
             }
 
             if (node.getLeft() == null && node.getRight() != null) {
-                traverse(node.getRight(), prefix += "1");
+                traverse(node.getRight(), prefix + "1");
             }
         }
 
@@ -275,14 +275,20 @@ public class HuffmanGraphic {
 
         String colorEncode = "";
 
-        for(int i = 0; i < colors.size(); i++){
-            try{
-                if(sA[i] == colors.get(i).getCode()){
-                    colorEncode += colors.get(i).getCode();
+        if(str == ""){
+            throw new InvalidHuffmanCodeException();
+        }
+
+        try{
+            for(String s: sA){
+                for(ColorCode c: colors){
+                    if(Integer.parseInt(s) == c.getColorValue()) {
+                        colorEncode += c.getCode();
+                    }
                 }
-            } catch (Exception e){
-                throw new EmptyCollectionException("Empty");
             }
+        } catch (Exception e){
+            throw new EmptyCollectionException("String");
         }
 
 
@@ -314,25 +320,33 @@ public class HuffmanGraphic {
         int height = image.getHeight();
         int width = image.getWidth();
 
+        String toEn = "";
+        String temp = "";
+
+        int pixel=0, alpha=0, red=0, green=0, blue=0;
+
         for(int x = 0; x < height; x++){
             for(int y = 0; y < width; y++){
-                int pixel = image.getRGB(y, x);
-                int alpha = (pixel >> 24) & 0xff;
-                int red = (pixel >> 16) & 0xff;
-                int green = (pixel >> 8) & 0xff;
-                int blue = pixel & 0xff;
+                pixel = image.getRGB(y, x);
+                alpha = (pixel >> 24) & 0xff ;
+                red = (pixel >> 16) & 0xff;
+                green = (pixel >> 8) & 0xff;
+                blue = pixel & 0xff;
 
-                String toEn = "";
+                toEn += alpha + "," + red + "," + green + "," + blue;
 
-                toEn += Integer.toString(alpha);
-                toEn += Integer.toString(red);
-                toEn += Integer.toString(green);
-                toEn += Integer.toString(blue);
+                if(y != height - 1){
+                    toEn += ",";
+                }
 
-                System.out.println(encode(toEn));
+                temp = encode(toEn).trim();
+                toEn = "";
+                out.println();
+                out.write(Integer.parseInt(temp, 2) + "\n");
+                temp = "";
             }
-        }
 
+        }
 
         //************************************
     }
@@ -364,20 +378,32 @@ public class HuffmanGraphic {
 
         //Throw an Exception for an empty str or if the any character is invalid (not 0 or 1).
         //*************************************
+        String ret = "";
+
         if(root == null){
             return null;
         }
 
-        if(getRootElement().getColorValue() == -1){
-            traverse(root.left, "0");
-            traverse(root.right, "1");
-        } else {
-            throw new InvalidHuffmanCodeException();
+        if(root.getElement().getCode() == "-1"){
+            traverse(root.getLeft(), str);
+            traverse(root.getRight(), str);
+        }
+
+        if (root.getElement().getCode() == "0"){
+            traverse(root.getLeft(), str);
+        }
+
+        if (root.getElement().getCode() == "1"){
+            traverse(root.getRight(), str);
+        }
+
+        if (root.getRight() == null && root.getLeft() == null) {
+            ret += (Integer.toString(root.getElement().getColorValue()) + ",");
         }
 
         //************************************
 
-        return null;   //DELETE once code is implemented
+        return ret;   //DELETE once code is implemented
     }
     /**
      * method: decodeGraphic

@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bead3377-721d-4570-9d79-046cffe55f77" name="Changes" comment="">
+    <list default="true" id="bead3377-721d-4570-9d79-046cffe55f77" name="Changes" comment="updated traverse no more null :D">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WalkOfChampions_small_Encoded.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WalkOfChampions_small_Encoded.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WeirHall_small_Encoded.txt" beforeDir="false" afterPath="$PROJECT_DIR$/WeirHall_small_Encoded.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballStadium_small_Encoded.txt" beforeDir="false" afterPath="$PROJECT_DIR$/footballStadium_small_Encoded.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hottyToddy_small_Encoded.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hottyToddy_small_Encoded.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/olemissBaseball_small_Encoded.txt" beforeDir="false" afterPath="$PROJECT_DIR$/olemissBaseball_small_Encoded.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HuffmanGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HuffmanGraphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +52,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.GraphicDriver">
     <configuration name="GraphicDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GraphicDriver" />
       <module name="csci211project3" />
@@ -55,9 +60,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HuffmanGraphicTest_Students" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="csci211project3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HuffmanGraphicTest_Students" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HuffmanGraphicTest_Students.testPrintCodes1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="csci211project3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HuffmanGraphicTest_Students" />
+      <option name="METHOD_NAME" value="testPrintCodes1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GraphicDriver" />
+        <item itemvalue="JUnit.HuffmanGraphicTest_Students" />
+        <item itemvalue="JUnit.HuffmanGraphicTest_Students.testPrintCodes1" />
       </list>
     </recent_temporary>
   </component>
@@ -70,6 +96,14 @@
       <option name="presentableId" value="Default" />
       <updated>1667035955197</updated>
     </task>
+    <task id="LOCAL-00001" summary="updated traverse no more null :D">
+      <created>1667256264294</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667256264294</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -82,5 +116,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="updated traverse no more null :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated traverse no more null :D" />
   </component>
 </project>
