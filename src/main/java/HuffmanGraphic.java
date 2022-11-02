@@ -457,14 +457,14 @@ public class HuffmanGraphic {
         int height, width;
         String a, r, g, b;
         int alpha, red, green, blue, x = 0, y = 0;
-        Scanner in = new Scanner(new File(inputFile));
-        height = Integer.parseInt(in.nextLine());
-        width = Integer.parseInt(in.nextLine());
+        Scanner il = new Scanner(new File(inputFile));
+        height = Integer.parseInt(il.nextLine());
+        width = Integer.parseInt(il.nextLine());
         BufferedImage output = new BufferedImage(height, width, BufferedImage.TYPE_INT_ARGB);
         String[] sA;
 
-        while(in.hasNextLine()){
-            String temp = decode(in.nextLine());
+        while(il.hasNextLine()){
+            String temp = decode(il.nextLine());
             sA = temp.split(",");
             a = sA[0];
             r = sA[1];
@@ -489,6 +489,7 @@ public class HuffmanGraphic {
         }
 
         ImageIO.write(output, "png", new File(outputFile));
+        il.close();
 
         //************************************
     }

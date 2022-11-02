@@ -56,10 +56,12 @@ public class GraphicDriver {
                 case 2:
                     System.out.println("Enter input file to encode and output file to write to");
                     inFile = scan.nextLine();
+                    scan.nextLine();
                     outFile = scan.nextLine();
                     huffmanCoding.encodeGraphic(inFile, outFile);
                     System.out.println("Now enter the starting and ending pixels to print");
                     start = Integer.parseInt(scan.nextLine());
+                    scan.nextLine();
                     end = Integer.parseInt(scan.nextLine());
                     System.out.println(huffmanCoding.printPixels(outFile, start, end));
                 break;
@@ -73,10 +75,12 @@ public class GraphicDriver {
                 case 4:
                     System.out.println("Enter input file to decode and output file to write to");
                     inFile = scan.nextLine();
+                    scan.nextLine();
                     outFile = scan.nextLine();
                     huffmanCoding.decodeGraphic(inFile, outFile);
                     System.out.println("Now enter the starting and ending pixels to print");
                     start = Integer.parseInt(scan.nextLine());
+                    scan.nextLine();
                     end = Integer.parseInt(scan.nextLine());
                     System.out.println(huffmanCoding.printPixels(outFile, start, end));
                 break;
