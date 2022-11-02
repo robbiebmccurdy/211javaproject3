@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bead3377-721d-4570-9d79-046cffe55f77" name="Changes" comment="Updated encodeGraphic method and got the throw to work on Decode">
+    <list default="true" id="bead3377-721d-4570-9d79-046cffe55f77" name="Changes" comment="Finished decode working on decodeGraphic now 80-90% done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footballStadium_small_Decoded.png" beforeDir="false" afterPath="$PROJECT_DIR$/footballStadium_small_Decoded.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/HuffmanGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/HuffmanGraphic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +48,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HuffmanGraphicTest_Students.testDecodedGraphic3">
+  <component name="RunManager" selected="JUnit.HuffmanGraphicTest_Students">
     <configuration name="HuffmanGraphicTest_Students" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="csci211project3" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,9 +100,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.HuffmanGraphicTest_Students" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students.testDecodedGraphic3" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students.testDecodedGraphic4" />
-        <item itemvalue="JUnit.HuffmanGraphicTest_Students" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students.testDecodedGraphic1" />
         <item itemvalue="JUnit.HuffmanGraphicTest_Students.testDecode1" />
       </list>
@@ -137,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667342602519</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finished decode working on decodeGraphic now 80-90% done">
+      <created>1667358768598</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667358768598</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -154,6 +162,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated traverse no more null :D" />
     <MESSAGE value="Updated encodeGraphic method and got the throw to work on Decode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated encodeGraphic method and got the throw to work on Decode" />
+    <MESSAGE value="Finished decode working on decodeGraphic now 80-90% done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished decode working on decodeGraphic now 80-90% done" />
   </component>
 </project>

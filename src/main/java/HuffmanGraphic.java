@@ -456,7 +456,7 @@ public class HuffmanGraphic {
 
         int height, width;
         String a, r, g, b;
-        int al, re, gr, bl, x = 0, y = 0;
+        int alpha, red, green, blue, x = 0, y = 0;
         Scanner in = new Scanner(new File(inputFile));
         height = Integer.parseInt(in.nextLine());
         width = Integer.parseInt(in.nextLine());
@@ -471,18 +471,20 @@ public class HuffmanGraphic {
             g = sA[2];
             b = sA[3];
 
-            al = Integer.parseUnsignedInt(a);
-            re = Integer.parseUnsignedInt(r);
-            gr = Integer.parseUnsignedInt(g);
-            bl = Integer.parseUnsignedInt(b);
+            alpha = Integer.parseUnsignedInt(a);
+            red = Integer.parseUnsignedInt(r);
+            green = Integer.parseUnsignedInt(g);
+            blue = Integer.parseUnsignedInt(b);
 
-            int updatedPixel = (al << 24) | (re << 16) | (gr << 8) | (bl);
+            int updatedPixel = ((alpha & 0xff) << 24) | ((red & 0xff) << 16) | ((green & 0xff) << 8) | ((blue & 0xff) << 0);
 
-            output.setRGB(x % output.getWidth(), y % output.getHeight(), ((al << 24) | (re << 16) | (gr << 8) | (bl)));
+            output.setRGB(x, y, updatedPixel);
+
             x++;
 
-            if(x % output.getHeight() == 0 && x != 0) {
+            if(x >= output.getWidth()) {
                 y++;
+                x = 0;
             }
         }
 
