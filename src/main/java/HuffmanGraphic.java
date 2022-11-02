@@ -10,7 +10,9 @@
  */
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -203,7 +205,7 @@ public class HuffmanGraphic {
         ArrayList<ColorCode> huffman = new ArrayList<>();
         if (root == null) throw new InvalidHTMLException();
         traverse(root.left, "0");
-        traverse( root.right, "1");
+        traverse(root.right, "1");
     }
 
     /**
@@ -320,7 +322,7 @@ public class HuffmanGraphic {
         int height = image.getHeight();
         int width = image.getWidth();
         out.write(height + "\n");
-        out.write((width) + "\n");
+        out.write(width + "\n");
 
         String toEn = "";
         String temp = "";
@@ -381,33 +383,46 @@ public class HuffmanGraphic {
 
         //Throw an Exception for an empty str or if the any character is invalid (not 0 or 1).
         //*************************************
+        BinaryTreeNode<ColorCode> current = root;
+
         String ret = "";
 
         if(root == null){
             return null;
         }
 
-        if(root.getElement().getCode() == "-1"){
-            traverse(root.getLeft(), str);
-            traverse(root.getRight(), str);
-        }
+        String temp = "";
 
-        if (root.getElement().getCode() == "0"){
-            traverse(root.getLeft(), str);
-            ret += (Integer.toString(root.getElement().getColorValue()) + ",");
-        }
-
-        if (root.getElement().getCode() == "1"){
-            traverse(root.getRight(), str);
-        }
-
-        if (root.getElement().getCode() != "0" && root.getElement().getCode() != "-1" && root.getElement().getCode() != "1") {
+        if(str == ""){
             throw new InvalidHuffmanCodeException();
         }
 
-        if (root.getRight() == null && root.getLeft() == null) {
-            ret += (Integer.toString(root.getElement().getColorValue()) + ",");
+        if(root.getElement().getColorValue() == -1){
+            for(int i = 0; i < str.length(); i++){
+                if(str.charAt(i) == '0'){
+                    if(current.getLeft() != null){
+                        current = current.getLeft();
+                    }
+                } else if(str.charAt(i) == '1') {
+                    if(current.getRight() != null){
+                        current = current.getRight();
+                    }
+                } else{
+                    throw new InvalidHuffmanCodeException();
+                }
+
+                if(current.getRight() == null && current.getLeft() == null){
+                    ret += current.getElement().getColorValue();
+                    if(i != str.length() - 1){
+                        ret += ",";
+                    }
+                    current = root;
+                }
+            }
         }
+
+
+        System.out.println(ret);
 
         //************************************
 
@@ -439,8 +454,39 @@ public class HuffmanGraphic {
         // When all the pixels are set, use ImageIO's static write method to write the graphic file (.png file)
         //*************************************
 
+        int height, width;
+        String a, r, g, b;
+        int al, re, gr, bl, x = 0, y = 0;
+        Scanner in = new Scanner(new File(inputFile));
+        height = Integer.parseInt(in.nextLine());
+        width = Integer.parseInt(in.nextLine());
+        BufferedImage output = new BufferedImage(height, width, BufferedImage.TYPE_INT_ARGB);
+        String[] sA;
 
+        while(in.hasNextLine()){
+            String temp = decode(in.nextLine());
+            sA = temp.split(",");
+            a = sA[0];
+            r = sA[1];
+            g = sA[2];
+            b = sA[3];
 
+            al = Integer.parseUnsignedInt(a);
+            re = Integer.parseUnsignedInt(r);
+            gr = Integer.parseUnsignedInt(g);
+            bl = Integer.parseUnsignedInt(b);
+
+            int updatedPixel = (al << 24) | (re << 16) | (gr << 8) | (bl);
+
+            output.setRGB(x % output.getWidth(), y % output.getHeight(), ((al << 24) | (re << 16) | (gr << 8) | (bl)));
+            x++;
+
+            if(x % output.getHeight() == 0 && x != 0) {
+                y++;
+            }
+        }
+
+        ImageIO.write(output, "png", new File(outputFile));
 
         //************************************
     }
